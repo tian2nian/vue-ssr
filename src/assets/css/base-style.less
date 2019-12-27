@@ -1,0 +1,380 @@
+/* 解决苹果设备触摸间断性失灵 */
+* {
+  cursor: pointer;
+}
+
+/*flex 布局通用*/
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.flex-4 {
+  flex: 4;
+}
+
+.flex-5 {
+  flex: 5;
+}
+
+.flex-6 {
+  flex: 6;
+}
+
+.flex-dc {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-ac {
+  display: flex;
+  align-items: center;
+}
+
+.flex-as {
+  display: flex;
+  align-items: flex-start;
+}
+
+.flex-ae {
+  display: flex;
+  align-items: flex-end;
+}
+
+.flex-pc {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-pe {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-ps {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex-pb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-pa {
+  display: flex;
+  justify-content: space-around;
+}
+
+/*浮动定位*/
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clear {
+  *zoom: 1;
+}
+
+.clear:after {
+  clear: both;
+  content: " ";
+  display: block;
+  height: 0;
+  font-size: 0;
+}
+
+/*
+超出显示为...
+*/
+.overflowHide(@max-w) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: @max-w;
+}
+
+/*
+超出n行显示为...
+*/
+.overLineHide(@line:3) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+/*
+ icon小图标基本样式    使用eg.:  .icons-config(30px, 30px);
+ */
+.icons-config(@width: 0, @height: 0, @vertical: normal, @bg_size: cover, @bg_pos: center) {
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-size: @bg_size;
+  background-position: @bg_pos;
+  width: @width;
+  min-width: @width;
+  height: @height;
+  min-height: @height;
+  vertical-align: @vertical;
+}
+
+/*
+右箭头 >
+*/
+.triangle-r(@color:@color_disable,@size:10px) {
+  position: relative;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: 0;
+    right: 0;
+    height: @size;
+    width: @size;
+    border-width: 1px 1px 0 0;
+    border-color: @color;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  }
+}
+
+/*
+向下倒三角
+ */
+.arrow(@color:@color_disable,@size:1px) {
+  display: inline-block;
+  vertical-align: middle;
+  border-left: @size solid transparent;
+  border-right: @size solid transparent;
+
+  &.desc {
+    border-top: @size solid @color;
+  }
+
+  &.asc {
+    border-bottom: @size solid @color;
+  }
+}
+
+// 图片不变形
+.image {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*reset：解决FF中没有src属性时img设置宽高无效的兼容问题*/
+img {
+  display: inline-block;
+}
+
+/*reset*/
+input, textarea, img, video, object {
+  box-sizing: border-box;
+}
+
+/*
+   placeholder颜色
+    */
+::placeholder {
+  color: #ccc;
+}
+
+::-webkit-placeholder {
+  color: #ccc;
+}
+
+::-moz-placeholder {
+  color: #ccc;
+}
+
+::-ms-placeholder {
+  color: #ccc;
+}
+
+/*icon:上传、添加图片*/
+.icon_addPic {
+  width: 100px;
+  height: 100px;
+  color: #ccc;
+  border: 4px dashed;
+  position: relative;
+}
+
+.icon_addPic:before, .icon_addPic:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.icon_addPic:before {
+  width: 40px;
+  border-top: 4px solid;
+  margin: -2px 0 0 -20px;
+}
+
+.icon_addPic:after {
+  border-left: 4px solid;
+  height: 40px;
+  margin: -20px 0 0 -2px;
+}
+
+/*icon:更多/筛选菜单*/
+.icon_menu {
+  width: 25px;
+  height: 5px;
+  border-top: double 15px;
+  border-bottom: solid 5px;
+}
+
+.icon_menu1 {
+  height: 5px;
+  border-top: 5px solid;
+  border-bottom: 5px solid;
+  background-clip: content-box;
+  background-color: currentColor;
+  padding: 5px 0;
+  width: 25px;
+  overflow: hidden;
+}
+
+/*icon:单选钮*/
+.icon_radio {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  padding: 4px;
+  border: 2px solid;
+  background-color: currentColor;
+  background-clip: content-box;
+}
+
+/*icon:删除*/
+.icon_del {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.icon_del:before, .icon_del:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.icon_del:before {
+  width: 12px;
+  border-top: 2px solid rgba(255, 255, 255, 0.5);
+  margin: -1px 0 0 -6px;
+  transform: rotate(45deg);
+}
+
+.icon_del:after {
+  border-left: 2px solid rgba(255, 255, 255, 0.5);
+  height: 12px;
+  margin: -6px 0 0 -1px;
+  transform: rotate(45deg);
+}
+
+/*icon:倒三角---------下*/
+.icon_triangular_down {
+  width: 0;
+  border: 5px solid;
+  border-color: currentColor transparent transparent;
+}
+
+/*icon:倒三角---------上*/
+.icon_triangular_up {
+  width: 0;
+  border: 5px solid;
+  border-color: transparent transparent currentColor;
+}
+
+/*icon:尖头---------右*/
+.icon_arrow_right {
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+/*icon:尖头---------上*/
+.icon_arrow_up {
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+/*icon:尖头---------下*/
+.icon_arrow_down {
+  width: 10px;
+  height: 10px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: rotate(135deg);
+}
+
+/*隐藏域*/
+.clip {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+/*段落缩进*/
+.p-indent {
+  text-indent: -3em;
+  padding-left: 3em;
+}
+
+/*文字两端对齐*/
+.justify {
+  text-align: justify;
+  text-justify: inter-ideograph; /*兼容ie*/
+}
+
+/*禁止选择*/
+.select-none {
+  user-select: none;
+  cursor: default;
+}
+
+/*文字内容翻转*/
+.rtl {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
